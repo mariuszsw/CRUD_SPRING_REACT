@@ -22,8 +22,8 @@ function LoginComponent() {
     }
 
     function handleSubmit(){
-        console.log(username);
-        console.log(password);
+        // console.log(username);
+        // console.log(password);
 
         if(username==='Mariusz' && password==='dummy'){
             console.log('Sucess');
