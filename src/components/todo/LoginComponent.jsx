@@ -1,39 +1,44 @@
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import { useAuth } from './security/AuthContext'
 
 function LoginComponent() {
 
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
 
-    const [showSuccesMessage, setShowSuccessMessage] = useState(false);
-    const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showSuccesMessage, setShowSuccessMessage] = useState(false)
+    const [showErrorMessage, setShowErrorMessage] = useState(false)
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
+    const authContext = useAuth()
 
     function handleUsernameChange(event){
-        // console.log(event.target.value);
-        setUsername(event.target.value);
+        // console.log(event.target.value)
+        setUsername(event.target.value)
     }
 
     function handlePasswordChange(event){
-        // console.log(event.target.value);
-        setPassword(event.target.value);
+        // console.log(event.target.value)
+        setPassword(event.target.value)
     }
 
     function handleSubmit(){
-        // console.log(username);
-        // console.log(password);
+        // console.log(username)
+        // console.log(password)
 
         if(username==='Mariusz' && password==='dummy'){
+            authContext.setAuthenticated(true)
             console.log('Sucess');
-            setShowSuccessMessage(true);
-            setShowErrorMessage(false);
-            navigate(`/welcome/${username}`);
+            setShowSuccessMessage(true)
+            setShowErrorMessage(false)
+            navigate(`/welcome/${username}`)
         } else {
-            console.log("Failed");
-            setShowSuccessMessage(false);
-            setShowErrorMessage(true);
+            authContext.setAuthenticated(false)
+            console.log("Failed")
+            setShowSuccessMessage(false)
+            setShowErrorMessage(true)
         }
     }
   

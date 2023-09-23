@@ -23,10 +23,8 @@ export default function TodoApp(){
                             <Route path='/logout' element={<LogoutComponent /> }/>
                             <Route path='*' element={<ErrorComponent /> }/>
                         </Routes>
-                    </BrowserRouter>   
-                                    
-            </AuthProvider>
-            
+                    </BrowserRouter>                                       
+            </AuthProvider>            
         </div>
     )   
 }
