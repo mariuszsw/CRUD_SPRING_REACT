@@ -1,9 +1,9 @@
 function FooterComponent() {
-    return(
+    return (
         <footer className="footer">
             <div className="container">
-                Welcome 
-            </div>            
+                Welcome
+            </div>
         </footer>
     )
 }

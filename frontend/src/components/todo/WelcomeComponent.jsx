@@ -9,19 +9,19 @@ function WelcomeComponent() {
     const [message, setMessage] = useState(null)
 
     function callHelloWorldRestApi() {
-        console.log('called')      
+        console.log('called')
 
         retrieveHelloWorldPathVariable('Mariusz')
             .then((response) => successfulResponse(response))
             .catch((error) => errorResponse(error))
-            .finally(() => console.log('cleanup'))    
+            .finally(() => console.log('cleanup'))
 
     }
 
     function successfulResponse(response) {
         console.log(response)
         setMessage(response.data.message)
-        
+
     }
 
     function errorResponse(error) {

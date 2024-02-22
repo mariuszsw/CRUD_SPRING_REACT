@@ -1,5 +1,5 @@
 function ErrorComponent() {
-    return(
+    return (
         <div className="ErrorComponent">
             <h1>We are working really hard!</h1>
             <div>

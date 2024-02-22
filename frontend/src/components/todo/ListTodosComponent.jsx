@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react";
-import { retrieveAllTodosForUser } from "./api/TodoApiService";
+import { retrieveAllTodosForUsername } from "./api/TodoApiService";
 
 function ListTodosComponent() {
 
     const today = new Date();
 
-    const targetDate = new Date(today.getFullYear()+12, today.getMonth(), today.getDate())
+    const targetDate = new Date(today.getFullYear() + 12, today.getMonth(), today.getDate())
 
     const [todos, setTodos] = useState([])
 
-    useEffect (
+    useEffect(
         () => refreshTodos(), []
     )
 
-    function refreshTodos(){
-        retrieveAllTodosForUser('Mariusz')
-        .then(response => {
-            console.log(response.data)
-            setTodos(response.data)
-        })
-        .catch(error => console.log(error))
+    function refreshTodos() {
+        retrieveAllTodosForUsername('Mariusz')
+            .then(response => {
+                // console.log(response.data)
+                setTodos(response.data)
+            })
+            .catch(error => console.log(error))
     }
-    return(
+    return (
         <div className="container">
             <h1>Things You Want to Do!</h1>
             <div>
@@ -35,19 +35,19 @@ function ListTodosComponent() {
                         </tr>
                     </thead>
                     <tbody>
-                    {
-                        todos.map(
-                            todo => (
-                                <tr key={todo.id}>
-                                    <td>{todo.id}</td>
-                                    <td>{todo.description}</td>
-                                    <td>{todo.done.toString()}</td>
-                                    <td>{todo.targetDate.toString()}</td>
-                                </tr>
+                        {
+                            todos.map(
+                                todo => (
+                                    <tr key={todo.id}>
+                                        <td>{todo.id}</td>
+                                        <td>{todo.description}</td>
+                                        <td>{todo.done.toString()}</td>
+                                        <td>{todo.targetDate.toString()}</td>
+                                    </tr>
+                                )
                             )
-                        )
-                    }
-                   
+                        }
+
                     </tbody>
                 </table>
             </div>
